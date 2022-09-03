@@ -1,12 +1,35 @@
-body{
+body {
     background-color: rgba(240, 231, 231, 0.966);
 }
-#user-img{
+
+#user-img {
     height: 50px;
     width: 50px;
     border: 1px solid rgba(240, 231, 231, 0.966);
     border-radius: 50px;
 }
-.news-blog{
+
+.news-blog {
     text-decoration: none;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.overflow {
+    white-space: nowrap;
+    width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.author-img{
+    height: 50px;
+    width: 50px;
+    border: 1px solid rgba(240, 231, 231, 0.966);
+    border-radius: 20px;
+}
+#search{
+    background-color: white;
+    border: 1px solid blue;
 }
