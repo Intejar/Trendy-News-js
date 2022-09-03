@@ -17,12 +17,12 @@ body {
     cursor: pointer;
 }
 
-.overflow {
+/* .overflow {
     white-space: nowrap;
-    width: 500px;
+    width: 200ch;
     overflow: hidden;
     text-overflow: ellipsis;
-}
+} */
 .author-img{
     height: 50px;
     width: 50px;
@@ -32,4 +32,7 @@ body {
 #search{
     background-color: white;
     border: 1px solid blue;
+}
+#count-items{
+    text-align: center;
 }
