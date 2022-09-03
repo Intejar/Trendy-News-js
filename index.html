@@ -26,8 +26,8 @@
                     <h1 class="text-primary">Trending News</h1>
                 </div>
                 <div class="d-flex justify-content-evenly align-items-center">
-                    <div class="pe-3"><a class="news-blog" href="">News</a></div>
-                    <div class="pe-3"><a class="news-blog" href="">Blog</a></div>
+                    <div class="pe-3"><a class="news-blog" href="index.html">News</a></div>
+                    <div class="pe-3"><a class="news-blog" href="blog.html">Blog</a></div>
                     <div class="pe-3"><img id="user-img" src="img/user-img.jpg" alt=""></div>
                 </div>
             </div>
@@ -36,19 +36,23 @@
         <section class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav" id="navbar">
-                      <a class="nav-link me-4" href="#">Home</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav" id="navbar">
+                            <a class="nav-link me-4" href="#">Home</a>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </nav>
+            </nav>
         </section>
         <section class="conatiner d-none" id="count-field">
-            <div class="d-flex justify-content-center container align-items-center " id="search"><p class="d-flex align-items-center" id="count-items"> </p></div>
+            <div class="d-flex justify-content-center container align-items-center " id="search">
+                <p class="p-2" id="count-items"> </p>
+            </div>
         </section>
     </header>
     <!-- header end -->
@@ -57,9 +61,32 @@
         <section id="loader" class="d-none mt-3">
             <div class="d-flex justify-content-center">
                 <div class="spinner-border text-primary" role="status">
-                  <span class="visually-hidden">Loading...</span>
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-              </div>
+            </div>
+        </section>
+        <section class="mt-3">
+            <div class="container d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <div><span>Sort By View :</span></div>
+                    <div id="dropdown" >
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false">Default</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">4.5</a></li>
+                            <li><a class="dropdown-item" href="#">4</a></li>
+                            <li><a class="dropdown-item" href="#">3</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="me-3"><button class="active">Today's Pick </button></div>
+                    <div><button class="inactive">Trending </button></div>
+                </div>
+            </div>
         </section>
         <section class="container d-flex justify-content-center">
             <div id="card-row">

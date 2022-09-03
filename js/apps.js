@@ -38,35 +38,46 @@ const displayCard = (items) => {
     getCard.innerHTML = ``;
     items.forEach(item => {
         const div = document.createElement('div');
-        div.innerHTML = `
-        <div class="card mb-3 mt-3"  style="">
+        div.innerHTML = `<div class="card mb-3 mt-3" style="">
         <div class="row g-2 p-3">
-        <div class="col-md-4">
-          <img src=${item.thumbnail_url} class="img-fluid rounded-start" alt="...">
+            <div class="col-md-4">
+                <img src=${item.thumbnail_url} class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">${item.title}</h5>
+                    <p class="overflow">${item.details}</p>
+                    <p class="card-text w-50"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <div class='d-flex justify-content-evenly align-items-center'>
+                        <div class='d-flex'>
+                            <div class='me-2'><img src=${item.author.img} class="img-fluid rounded-start author-img" alt="..."></div>
+                            <div>
+                                <h5> ${item.author.name}</h5>
+                                <h6> ${item.author.published_date}</h6>
+                            </div>
+                        </div>
+                        <div class='d-flex'>
+                            <div class='me-2'><i class="fa-solid fa-eye"></i></div>
+                            <div> <span>${item.total_view}<span></div>
+                        </div>
+                        <div>
+                            <div>
+                                <i class="fa-solid fa-star star-color"></i>
+                                <i class="fa-solid fa-star star-color"></i>
+                                <i class="fa-solid fa-star star-color"></i>
+                                <i class="fa-solid fa-star star-color"></i>
+                                <i class="fa-solid fa-star-half star-color"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">${item.title}</h5>
-            <p class="overflow">${item.details}</p>
-            <p class="card-text w-50"><small class="text-muted">Last updated 3 mins ago</small></p></div>
-          </div>
-          <div class='d-flex justify-content-evenly'>
-          <div class='d-flex'>
-          <div><img src=${item.author.img} class="img-fluid rounded-start author-img" alt="..."></div>
-          <div> <h5> ${item.author.name}</h5><h6> ${item.author.published_date}</h6> 
-      </div>
-      <div class='d-flex'>
-          <div><i class="fa-solid fa-eye"></i></div>
-          <div> <span>${item.total_view}<span></div> 
-      </div>
-      <div>
-          <div><i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-          </div>
+    </div>`
         
-        </div>
-        
-        `
         getCard.appendChild(div);
 
     })
