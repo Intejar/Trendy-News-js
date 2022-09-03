@@ -13,6 +13,7 @@ const displayNavbar = (infos) => {
         a.innerText = `${info.category_name}`;
         getNavDiv.appendChild(a);
         a.addEventListener('click', function () {
+            getLoader(true);
             fetch(`https://openapi.programming-hero.com/api/news/category/${info.category_id}`)
                 .then(res => res.json())
                 .then(data => displayCard(data.data))
@@ -20,12 +21,14 @@ const displayNavbar = (infos) => {
     });
 }
 const displayCard = (items) => {
+    
     const countField = document.getElementById('count-field');
         const countItems = document.getElementById('count-items');
         if (items.length >= 0) {
             count = items.length
             countItems.innerText = count + ' '+'items found in this section'
             countField.classList.remove('d-none');
+
         }
         else {
             countItems.innerText = 'No item found';
@@ -44,8 +47,8 @@ const displayCard = (items) => {
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">${item.title}</h5>
-            <p class="card-text overflow-hidden">${item.details}</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div>
+            <p class="overflow">${item.details}</p>
+            <p class="card-text w-50"><small class="text-muted">Last updated 3 mins ago</small></p></div>
           </div>
           <div class='d-flex justify-content-evenly'>
           <div class='d-flex'>
@@ -67,7 +70,18 @@ const displayCard = (items) => {
         getCard.appendChild(div);
 
     })
+    getLoader(false);
 }
+const getLoader = value => {
+    const loader = document.getElementById('loader');
+    if (value) {
+      loader.classList.remove('d-none');
+    }
+    else {
+      loader.classList.add('d-none');
+    }
+  
+  }
 
 
 getNavbar();
