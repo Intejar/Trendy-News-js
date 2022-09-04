@@ -21,34 +21,36 @@ const displayNavbar = (infos) => {
     });
 }
 const displayCard = (items) => {
-    
-    const countField = document.getElementById('count-field');
-        const countItems = document.getElementById('count-items');
-        if (items.length >= 0) {
-            count = items.length
-            countItems.innerText = count + ' '+'items found in this section'
-            countField.classList.remove('d-none');
 
-        }
-        else {
-            countItems.innerText = 'No item found';
-            countField.classList.remove('d-none');
-        }
+    const countField = document.getElementById('count-field');
+    const countItems = document.getElementById('count-items');
+    if (items.length >= 0) {
+        count = items.length
+        countItems.innerText = count + ' ' + 'items found in this section'
+        countField.classList.remove('d-none');
+
+    }
+    else {
+        countItems.innerText = 'No item found';
+        countField.classList.remove('d-none');
+    }
     const getCard = document.getElementById('card-row');
     getCard.innerHTML = ``;
     items.forEach(item => {
         const div = document.createElement('div');
-        div.innerHTML = `<div class="card mb-3 mt-3" style="">
-        <div class="row g-2 p-3">
+        div.innerHTML = `<div class="card mb-3 mt-3  d-flex justify-content-center" style="">
+        <div class="row p-3">
             <div class="col-md-4">
                 <img src=${item.thumbnail_url} class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">${item.title}</h5>
-                    <p class="overflow">${item.details}</p>
-                    <p class="card-text w-50"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <div class='d-flex justify-content-evenly align-items-center'>
+                    <div class="">
+                        <h5 class="card-title">${item.title}</h5>
+                        <div><textarea id='para' rows="4" cols="50" maxlength="50">${item.details}</textarea></div>                 
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                    <div class='mt-3 d-flex justify-content-evenly align-items-center'>
                         <div class='d-flex'>
                             <div class='me-2'><img src=${item.author.img} class="img-fluid rounded-start author-img" alt="..."></div>
                             <div>
@@ -76,9 +78,13 @@ const displayCard = (items) => {
                 </div>
             </div>
         </div>
-    </div>`
-        
+    </div>
+    `
+        const getFooter = document.getElementById('footer');
+        getFooter.classList.remove('d-none');
         getCard.appendChild(div);
+        getCard.appendChild(getFooter);
+
 
     })
     getLoader(false);
@@ -86,13 +92,14 @@ const displayCard = (items) => {
 const getLoader = value => {
     const loader = document.getElementById('loader');
     if (value) {
-      loader.classList.remove('d-none');
+        loader.classList.remove('d-none');
     }
     else {
-      loader.classList.add('d-none');
+        loader.classList.add('d-none');
     }
-  
-  }
+
+}
+
 
 
 getNavbar();

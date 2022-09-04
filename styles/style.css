@@ -17,12 +17,11 @@ body {
     cursor: pointer;
 }
 
-/* .overflow {
-    white-space: nowrap;
-    width: 200ch;
-    overflow: hidden;
+#para{
     text-overflow: ellipsis;
-} */
+    overflow: hidden;
+    border: none;
+}
 .author-img{
     height: 50px;
     width: 50px;
