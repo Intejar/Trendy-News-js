@@ -20,8 +20,10 @@ const displayNavbar = (infos) => {
         })
     });
 }
-const displayCard = (items) => {
-
+const displayCard = (items) => {    
+    items.sort((a, b) => {
+        return b.total_view - a.total_view;
+    });
     const countField = document.getElementById('count-field');
     const countItems = document.getElementById('count-items');
     if (items.length >= 0) {
@@ -37,6 +39,9 @@ const displayCard = (items) => {
     const getCard = document.getElementById('card-row');
     getCard.innerHTML = ``;
     items.forEach(item => {
+        if(item.author.name == null){
+            return 'No name found'
+        }
         const div = document.createElement('div');
         div.innerHTML = `<div class="card mb-3 mt-3  d-flex justify-content-center" style="">
         <div class="row p-3">
