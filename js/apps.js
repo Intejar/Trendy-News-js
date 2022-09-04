@@ -45,8 +45,8 @@ const displayCard = (items) => {
     const getCard = document.getElementById('card-row');
     getCard.innerHTML = ``;
     items.forEach(item => {
-        const div = document.createElement('div');
-        div.innerHTML = `<div class="card mb-3 mt-3  d-flex justify-content-center" style="">
+        const showCard = document.createElement('div');
+        showCard.innerHTML = `<div class="card mb-3 mt-3  d-flex justify-content-center" style="">
         <div class="row p-3">
             <div class="col-md-4">
                 <img src=${item.thumbnail_url} class="img-fluid rounded-start" alt="...">
@@ -62,13 +62,13 @@ const displayCard = (items) => {
                         <div class='d-flex'>
                             <div class='me-2'><img src=${item.author.img} class="img-fluid rounded-start author-img" alt="..."></div>
                             <div>
-                                <h5> ${item.author.name}</h5>
-                                <h6> ${item.author.published_date}</h6>
+                                <h5> ${item.author?.name}</h5>
+                                <h6> ${item.author?.published_date}</h6>
                             </div>
                         </div>
                         <div class='d-flex'>
                             <div class='me-2'><i class="fa-solid fa-eye"></i></div>
-                            <div> <span>${item.total_view}<span></div>
+                            <div> <span>${item?.total_view}<span></div>
                         </div>
                         <div>
                             <div>
@@ -85,14 +85,8 @@ const displayCard = (items) => {
         </div>
     </div>
     `
-
-        const getFooter = document.getElementById('footer');
-        getFooter.classList.remove('d-none');
-        getCard.appendChild(div);
-        getCard.appendChild(getFooter);
-
-
-
+        getCard.appendChild(showCard);
+        document.getElementById('footer').classList.remove('d-none');
     })
     getLoader(false);
 }
@@ -108,8 +102,3 @@ const getLoader = value => {
 }
 
 getNavbar();
-
-
-
-
-

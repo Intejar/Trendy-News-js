@@ -58,3 +58,7 @@ body {
     text-decoration: none;
     color: grey;
 }
+#footer{
+    position:relative;
+    bottom: 10;
+}
