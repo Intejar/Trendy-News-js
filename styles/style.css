@@ -17,11 +17,6 @@ body {
     cursor: pointer;
 }
 
-#para{
-    text-overflow: ellipsis;
-    overflow: hidden;
-    border: none;
-}
 .author-img{
     height: 50px;
     width: 50px;

@@ -2,6 +2,9 @@ const getNavbar = () => {
     fetch('https://openapi.programming-hero.com/api/news/categories')
         .then(res => res.json())
         .then(data => displayNavbar(data.data.news_category))
+        .catch(error => {
+            throw (error);
+        })
 }
 const displayNavbar = (infos) => {
     infos.forEach(info => {
@@ -17,16 +20,19 @@ const displayNavbar = (infos) => {
             fetch(`https://openapi.programming-hero.com/api/news/category/${info.category_id}`)
                 .then(res => res.json())
                 .then(data => displayCard(data.data))
+                .catch(error => {
+                    throw (error);
+                })
         })
     });
 }
-const displayCard = (items) => {    
+const displayCard = (items) => {
     items.sort((a, b) => {
         return b.total_view - a.total_view;
     });
     const countField = document.getElementById('count-field');
     const countItems = document.getElementById('count-items');
-    if (items.length >= 0) {
+    if (items.length > 0) {
         count = items.length
         countItems.innerText = count + ' ' + 'items found in this section'
         countField.classList.remove('d-none');
@@ -39,9 +45,6 @@ const displayCard = (items) => {
     const getCard = document.getElementById('card-row');
     getCard.innerHTML = ``;
     items.forEach(item => {
-        if(item.author.name == null){
-            return 'No name found'
-        }
         const div = document.createElement('div');
         div.innerHTML = `<div class="card mb-3 mt-3  d-flex justify-content-center" style="">
         <div class="row p-3">
@@ -52,7 +55,7 @@ const displayCard = (items) => {
                 <div class="card-body">
                     <div class="">
                         <h5 class="card-title">${item.title}</h5>
-                        <div><textarea id='para' rows="4" cols="50" maxlength="50">${item.details}</textarea></div>                 
+                        <p id='para'>${item.details.slice(0, 200)}...</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                     <div class='mt-3 d-flex justify-content-evenly align-items-center'>
@@ -76,19 +79,18 @@ const displayCard = (items) => {
                                 <i class="fa-solid fa-star-half star-color"></i>
                             </div>
                         </div>
-                        <div>
-                            <div><i class="fa-solid fa-arrow-right"></i></div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     `
+
         const getFooter = document.getElementById('footer');
         getFooter.classList.remove('d-none');
         getCard.appendChild(div);
         getCard.appendChild(getFooter);
+
 
 
     })
@@ -105,6 +107,9 @@ const getLoader = value => {
 
 }
 
-
-
 getNavbar();
+
+
+
+
+
